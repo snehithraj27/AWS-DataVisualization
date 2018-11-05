@@ -7,6 +7,7 @@ allow a user to select intervals or attributes in a data set, show
  results as a pie chart, a histogram, or a scatter or point chart 
   
 For example: 
+
 ->For Earthquakes: 
   For a 7 day period showing quakes in magnitude intervals: less than 2, 
   2 to 2.5, 2.5 to 3.0, up to 6.0 to 6.5 
