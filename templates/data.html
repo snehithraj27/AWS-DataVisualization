@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Quiz2</h1>
+<h1>Snehith Raj Bada</h1>
+<h1>1001552507</h1>
+<a href="/">Home</a>
+<br>
+<table border=4>
+    <thead>
+    <td>time</td>
+    <td>latitude</td>
+    <td>longitude</td>
+    <td>depth</td>
+    <td>mag</td>
+    <td>magType</td>
+    <td>nst</td>
+    <td>gap</td>
+    <td>dmin</td>
+    <td>rms</td>
+    <td>net</td>
+    <td>id</td>
+    <td>updated</td>
+    <td>place</td>
+    <td>type</td>
+    <td>horizontalError</td>
+    <td>depthError</td>
+    <td>magError</td>
+    <td>magNst</td>
+    <td>status</td>
+    <td>locationSource</td>
+     <td>magSource</td>
+    </thead>
+
+    {% for row in msg %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[8] }}</td>
+            <td>{{ row[9] }}</td>
+            <td>{{ row[10] }}</td>
+            <td>{{ row[11] }}</td>
+            <td>{{ row[12] }}</td>
+            <td>{{ row[13] }}</td>
+            <td>{{ row[14] }}</td>
+            <td>{{ row[15] }}</td>
+        <td>{{ row[16] }}</td>
+        <td>{{ row[17] }}</td>
+        <td>{{ row[18] }}</td>
+        <td>{{ row[19] }}</td>
+        <td>{{ row[20] }}</td>
+        <td>{{ row[21] }}</td>
+
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

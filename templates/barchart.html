@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+
+    <style>
+        svg {
+            display: block;
+        }
+        html, body, #horizontal_chart, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="horizontal_chart" class='with-3d-shadow with-transitions'>
+    <svg></svg>
+</div>
+
+<script>
+	var zipped_data= {{zipped_data}}
+     var x2 = {{x2|tojson}}
+     var abc ='';
+     var long_short_data = [];
+     for(i=0;i<zipped_data.length;i++)
+             {
+                long_short_data.push({"label": x2[i], "value": zipped_data[i]});
+             }
+	var finalData = [];
+	finalData.push({"key":"Horizontal Chart", "values":long_short_data});
+    var chart;
+    nv.addGraph(function() {
+        chart = nv.models.multiBarHorizontalChart()
+            .x(function(d) { return d.label })
+            .y(function(d) { return d.value })
+            .yErr(function(d) { return [-Math.abs(d.value * Math.random() * 0.3), Math.abs(d.value * Math.random() * 0.3)] })
+            .barColor(d3.scale.category20().range())
+            .duration(250)
+            .showControls(true)
+            .showLegend(true)
+            .legendPosition("bottom")
+            .controlsPosition("bottom")
+            .margin({left: 100})
+            .stacked(true);
+        chart.yAxis.tickFormat(d3.format(',.2f'));
+        chart.yAxis.axisLabel('Y Axis');
+        chart.xAxis.axisLabel('X Axis').axisLabelDistance(20);
+        d3.select('#horizontal_chart svg')
+            .datum(finalData)
+            .call(chart);
+        nv.utils.windowResize(chart.update);
+        chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+        chart.state.dispatch.on('change', function(state){
+            nv.log('state', JSON.stringify(state));
+        });
+        return chart;
+    });
+</script>
+</body>
+</html>

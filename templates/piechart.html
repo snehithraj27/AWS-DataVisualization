@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css" rel="stylesheet" type="text/css">
+
+    <style>
+        svg {
+            display: block;
+            float: left;
+            height: 700px ;
+            width: 700px ;
+        }
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class='with-3d-shadow with-transitions'>
+
+<svg id="svg1" class="mypiechart"></svg>
+<svg id="svg2" class="mypiechart"></svg>
+
+<script>
+var zipped_data= {{zipped_data}}
+     var x2 = {{x2|tojson}}
+     var abc ='';
+     var testdata2 = [];
+     for(i=0;i<zipped_data.length;i++)
+             {
+                testdata2.push({"key": x2[i], "y": zipped_data[i]});
+             }
+
+    var height = 600;
+    var width = 600;
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.key })
+            .y(function(d) { return d.y })
+            .width(width)
+            .height(height)
+            .showTooltipPercent(true);
+        d3.select("#svg1")
+            .datum(testdata2)
+            .transition().duration(1200)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
+        return chart;
+    });
+</script>
+</body>
+</html>

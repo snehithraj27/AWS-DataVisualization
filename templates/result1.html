@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="{{ user_image }}" alt="User Image">
+<h3>Centroid Locations</h3>
+<table border=4>
+{% for row in  msg1%}
+    <tr>
+    <td>{{ row }}</td>
+    </tr>
+{% endfor %}
+</table>
+<br>
+
+<h3>Distance between Clusters</h3>
+<table border=4>
+{% for row in  msg2%}
+    <tr>
+    <td>{{ row }}</td>
+    </tr>
+{% endfor %}
+</table>
+<br>
+
+<h3>No of points in cluster</h3>
+<table border=4>
+{% for row in  msg3%}
+    <tr>
+    <td>{{ row }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
