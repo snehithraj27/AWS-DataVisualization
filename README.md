@@ -14,7 +14,7 @@ For example:
   Showing this as a horizontal bar chart as well as a pie chart 
 
 ->For the Titanic data: 
-	Using ML clustering, for 8 clusters in Titanic data, based on age  
+  Using ML clustering, for 8 clusters in Titanic data, based on age  
   and fare price and showing centroids on point (scatter) chart.  
 
   Users of this service will interact with the service through web page 
